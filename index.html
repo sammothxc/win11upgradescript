@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Preparing Download...</title>
+  <script>
+    window.onload = function() {
+      // Start the download
+      const link = document.createElement("a");
+      link.href = "https://raw.githubusercontent.com/sammothxc/win11upgradescript/refs/heads/main/addtogroup.ps1";
+      link.download = "";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Wait 5 seconds, then go to README
+      setTimeout(() => {
+        window.location.href = "https://github.com/sammothxc/win11upgradescript/blob/main/README.md";
+      }, 5000);
+    };
+  </script>
+</head>
+<body>
+  <p>Downloading your file. You will be redirected to the README shortly...</p>
+</body>
+</html>
