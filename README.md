@@ -8,7 +8,7 @@ Pre-requisites: You need to be logged into YOUR net-id account (local Admin won'
 
 3. Run `.\addtogroup.ps1 -ComputerName "COMPUTER-NAME"` (make sure to replace COMPUTER-NAME with the actual computer name.
 
-IF YOU GET AN ERROR ABOUT RUNNING SCRIPTS IS DISABLED ON THIS SYSTEM:
-1. Run 'Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser'
-2. Select 'Yess to All'
+**IF YOU GET AN ERROR ABOUT RUNNING SCRIPTS IS DISABLED ON THIS SYSTEM:**
+1. Run `Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`
+2. Select `Yess to All`
 3. Re-run the script command
