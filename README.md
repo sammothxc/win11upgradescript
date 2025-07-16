@@ -10,5 +10,5 @@ Pre-requisites: You need to be logged into YOUR net-id account (local Admin won'
 
 **IF YOU GET AN ERROR ABOUT RUNNING SCRIPTS IS DISABLED ON THIS SYSTEM:**
 1. Run `Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`
-2. Select `Yess to All`
+2. Select `Yes to All`
 3. Re-run the script command
