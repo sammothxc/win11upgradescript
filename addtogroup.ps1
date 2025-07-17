@@ -1,3 +1,4 @@
+Clear-Host
 param(
     [Parameter(Mandatory=$true)]
     [string]$ComputerName
@@ -11,6 +12,7 @@ if (-not (Get-Module -ListAvailable -Name ActiveDirectory)) {
     Write-Error "x Active Directory module is not available. Please install RSAT: Active Directory Tools." -ForegroundColor Red
     exit 1
 }
+Write-Host "$([char]8730) Active Directory module installed" -ForegroundColor Green
 
 # Import AD module
 Import-Module ActiveDirectory
@@ -22,6 +24,7 @@ try {
     Write-Error "x You do not have permission to query Active Directory. Run with proper privileges." -ForegroundColor Red
     exit 1
 }
+Write-Host "$([char]8730) Running with priveleges" -ForegroundColor Green
 
 # Try to get the computer object
 $Computer = Get-ADComputer -Identity $ComputerName -ErrorAction SilentlyContinue
