@@ -38,7 +38,7 @@ if (-not $Computer) {
 }
 
 # Show details and prompt for confirmation
-Write-Host "$([char]8730) Computer Found" -ForegroundColor Yellow
+Write-Host "--> Computer Found" -ForegroundColor Yellow
 Write-Host " - Name: $($Computer.Name)"
 Write-Host " - OU Groups: $($Computer.DistinguishedName)"
 Write-Host ""
