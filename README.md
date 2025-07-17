@@ -1,4 +1,4 @@
-**Powershell Script to add a computer to the OIT-TS-Windows11-Upgrade-Available group**
+**Powershell Script to add a computer to the `OIT-TS-Windows11-Upgrade-Available` Active Directory group**
 
 Pre-requisites: You need to be logged into YOUR net-id account (local Admin won't work), and [RSAT: Active Directory Services](https://activedirectorypro.com/install-rsat-remote-server-administration-tools-windows-10/) must be installed with Optional Features.
 
