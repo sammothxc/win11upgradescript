@@ -1,4 +1,3 @@
-Clear-Host
 param(
     [Parameter(Mandatory=$true)]
     [string]$ComputerName
@@ -9,6 +8,7 @@ $GroupName = "OIT-TS-Windows11-Upgrade-Available"
 
 # Check if Active Directory module is available
 if (-not (Get-Module -ListAvailable -Name ActiveDirectory)) {
+    Clear-Host
     Write-Error "x Active Directory module is not available. Please install RSAT: Active Directory Tools." -ForegroundColor Red
     exit 1
 }
@@ -21,6 +21,7 @@ Import-Module ActiveDirectory
 try {
     Get-ADDomain > $null
 } catch {
+    Clear-Host
     Write-Error "x You do not have permission to query Active Directory. Run with proper privileges." -ForegroundColor Red
     exit 1
 }
@@ -30,6 +31,7 @@ Write-Host "$([char]8730) Running with priveleges" -ForegroundColor Green
 $Computer = Get-ADComputer -Identity $ComputerName -ErrorAction SilentlyContinue
 
 if (-not $Computer) {
+    Clear-Host
     Write-Host "x Computer '$ComputerName' not found in Active Directory." -ForegroundColor Red
     exit 1
 }
