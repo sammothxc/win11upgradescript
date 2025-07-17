@@ -10,7 +10,7 @@ Pre-requisites: RSAT: Active Directory Services must be installed with Optional 
 
 4. Run `.\addtogroup.ps1 -ComputerName "COMPUTER-NAME"` (make sure to replace `COMPUTER-NAME` with the actual computer name)
 
-***IF YOU GET AN ERROR SIMILAR TO "RUNNING SCRIPTS IS DISABLED ON THIS SYSTEM":***
+***IF YOU GET AN ERROR SIMILAR TO "`RUNNING SCRIPTS IS DISABLED ON THIS SYSTEM`":***
 1. Run `Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`
 2. Select `Yes to All`
 3. Re-run the script command
