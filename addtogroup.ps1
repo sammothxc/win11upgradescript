@@ -8,7 +8,7 @@ $GroupName = "OIT-TS-Windows11-Upgrade-Available"
 
 # Check if Active Directory module is available
 if (-not (Get-Module -ListAvailable -Name ActiveDirectory)) {
-    Write-Error "[X] Active Directory module is not available. Please install RSAT: Active Directory Tools."
+    Write-Error "× Active Directory module is not available. Please install RSAT: Active Directory Tools." -ForegroundColor Red
     exit 1
 }
 
@@ -19,7 +19,7 @@ Import-Module ActiveDirectory
 try {
     Get-ADDomain > $null
 } catch {
-    Write-Error "[X] You do not have permission to query Active Directory. Run with proper privileges."
+    Write-Error "× You do not have permission to query Active Directory. Run with proper privileges." -ForegroundColor Red
     exit 1
 }
 
@@ -27,27 +27,26 @@ try {
 $Computer = Get-ADComputer -Identity $ComputerName -ErrorAction SilentlyContinue
 
 if (-not $Computer) {
-    Write-Host "Computer '$ComputerName' not found in Active Directory."
+    Write-Host "× Computer '$ComputerName' not found in Active Directory." -ForegroundColor Red
     exit 1
 }
 
 # Show details and prompt for confirmation
-Write-Host "Found computer:"
+Write-Host "$([char]8730) Found computer:" -ForegroundColor Green
 Write-Host " - Name: $($Computer.Name)"
 Write-Host " - DistinguishedName: $($Computer.DistinguishedName)"
 Write-Host ""
 $confirm = Read-Host "Do you want to add this computer to group '$GroupName'? (y/n)"
 
 if ($confirm -ne 'y' -and $confirm -ne 'Y') {
-    Write-Host "Operation cancelled."
+    Write-Host "× Operation cancelled." -ForegroundColor Red
     exit 0
 }
 
 # Add computer to the group
 try {
     Add-ADGroupMember -Identity $GroupName -Members $Computer
-    Write-Host "`u2713" -ForegroundColor Green -NoNewline
-    Write-Host "$ComputerName successfully added to group '$GroupName'."
+    Write-Host "$([char]8730) $ComputerName successfully added to group '$GroupName'." -ForegroundColor Green
 } catch {
-    Write-Error "Failed to add computer to group. Error: $_"
+    Write-Error "× Failed to add computer to group. Error: $_" -ForegroundColor Red
 }
