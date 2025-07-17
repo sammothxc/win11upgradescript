@@ -12,6 +12,7 @@ if (-not (Get-Module -ListAvailable -Name ActiveDirectory)) {
     Write-Error "x Active Directory module is not available. Please install RSAT: Active Directory Tools." -ForegroundColor Red
     exit 1
 }
+Clear-Host
 Write-Host "$([char]8730) Active Directory module installed" -ForegroundColor Green
 
 # Import AD module
