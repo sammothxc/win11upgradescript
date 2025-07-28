@@ -12,7 +12,7 @@ $GroupName = "OIT-TS-Windows11-Upgrade-Available"
 # Check if Active Directory module is available
 if (-not (Get-Module -ListAvailable -Name ActiveDirectory)) {
     Clear-Host
-    Write-Error "x Active Directory module is not available. Please install RSAT: Active Directory Tools." -ForegroundColor Red
+    Write-Host "x Active Directory module is not available. Please install RSAT: Active Directory Tools." -ForegroundColor Red
     exit 1
 }
 [System.Console]::Clear()
@@ -26,7 +26,7 @@ try {
     Get-ADDomain > $null
 } catch {
     Clear-Host
-    Write-Error "x You do not have permission to query Active Directory. Run with proper privileges." -ForegroundColor Red
+    Write-Host "x You do not have permission to query Active Directory. Run with proper privileges." -ForegroundColor Red
     exit 1
 }
 Write-Host "$([char]8730) Running with priveleges" -ForegroundColor Green
@@ -57,5 +57,5 @@ try {
     Add-ADGroupMember -Identity $GroupName -Members $Computer -Credential $credentials
     Write-Host "$([char]8730) $ComputerName successfully added to group '$GroupName'." -ForegroundColor Green
 } catch {
-    Write-Error "x Failed to add computer to group. Error: $_" -ForegroundColor Red
+    Write-Host "x Failed to add computer to group. Error: $_" -ForegroundColor Red
 }
