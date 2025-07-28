@@ -3,6 +3,9 @@ param(
     [string]$ComputerName
 )
 
+# Prompt for credentials
+$credentials = Get-Credential
+
 # Configuration
 $GroupName = "OIT-TS-Windows11-Upgrade-Available"
 
@@ -29,7 +32,7 @@ try {
 Write-Host "$([char]8730) Running with priveleges" -ForegroundColor Green
 
 # Try to get the computer object
-$Computer = Get-ADComputer -Identity $ComputerName -ErrorAction SilentlyContinue
+$Computer = Get-ADComputer -Identity $ComputerName -Credential $credentials -ErrorAction SilentlyContinue
 
 if (-not $Computer) {
     Clear-Host
@@ -51,7 +54,7 @@ if ($confirm -ne 'y' -and $confirm -ne 'Y') {
 
 # Add computer to the group
 try {
-    Add-ADGroupMember -Identity $GroupName -Members $Computer
+    Add-ADGroupMember -Identity $GroupName -Members $Computer -Credential $credentials
     Write-Host "$([char]8730) $ComputerName successfully added to group '$GroupName'." -ForegroundColor Green
 } catch {
     Write-Error "x Failed to add computer to group. Error: $_" -ForegroundColor Red
