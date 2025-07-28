@@ -23,7 +23,7 @@ Import-Module ActiveDirectory
 
 # Check if user has permission (can query a known object)
 try {
-    Get-ADDomain > $null
+    Get-ADDomain -Credential $credentials > $null
 } catch {
     Clear-Host
     Write-Host "x You do not have permission to query Active Directory. Run with proper privileges." -ForegroundColor Red
